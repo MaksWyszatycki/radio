@@ -14,9 +14,7 @@ function App() {
   const [currentTime, setCurrentTime] = useState(new Date());
   const audioRef = useRef(new Audio(currentStation.url))
   const [location, setLocation] = useState(null);
-  const [browserInfo, setBrowserInfo] = useState(null);
-  const [showConsent, setShowConsent] = useState(true);
-  const [volume, setVolume] = useState(0.5);
+const [volume, setVolume] = useState(0.5);
 
 
 
@@ -46,25 +44,7 @@ function App() {
     }
   };
 
-  useEffect(() => {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(
-        (position) => {
-          setLocation({
-            latitude: position.coords.latitude,
-            longitude: position.coords.longitude,
-          });
-        },
-        (error) => {
-          console.error("Geolocation error: ", error);
-        }
-      );
-    }
-    setBrowserInfo({
-      userAgent: navigator.userAgent,
-      language: navigator.language,
-    });
-  }, []);
+
 
   const handleVolumeChange = (event) => {
     const newVolume = parseFloat(event.target.value);
